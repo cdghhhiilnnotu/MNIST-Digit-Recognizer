@@ -21,22 +21,24 @@ train_Y, val_Y, test_Y = data_org_Y[:TRAIN_LIMIT], data_org_Y[TRAIN_LIMIT:VALID_
 data =  pd.read_csv('Data/test.csv')
 data = data.values
 
+indexImg = 109
 predictions = model.predict(data)
-print(predictions)
-print(np.argmax(predictions[227]))
+# print(predictions)
+# print(np.argmax(predictions[indexImg]))
 
-test_img = data[227]
+test_img = data[indexImg]
 test_img = np.reshape(test_img, (28,28))
 
 plt.imshow(test_img)
+plt.xlabel(f'Predicted: {np.argmax(predictions[indexImg])}')
 plt.show()
 
-history = model.evaluate(test_X, test_Y)
-acc_res = history.history['acc']
-val_acc_res = history.history['val_acc']
-loss_res = history.history['loss']
-val_loss_res = history.history['val_loss']
-print(history)
+# history = model.evaluate(test_X, test_Y)
+# acc_res = history.history['acc']
+# val_acc_res = history.history['val_acc']
+# loss_res = history.history['loss']
+# val_loss_res = history.history['val_loss']
+# print(history)
 
 
 
